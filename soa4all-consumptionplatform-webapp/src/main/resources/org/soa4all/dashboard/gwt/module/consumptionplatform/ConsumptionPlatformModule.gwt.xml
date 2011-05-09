@@ -1,0 +1,24 @@
+<module rename-to="ConsumptionPlatform">
+	<inherits name="org.soa4all.dashboard.gwt.core.shared.CoreShared" />
+	<inherits name='org.soa4all.uilibrary.ratingwidget.RatingWidget'/>
+	<inherits name='org.soa4all.uilibrary.tagcloud.TagCloud'/>
+	<inherits name="org.soa4all.dashboard.gwt.module.favorites.FavoritesModule" />
+	<!--inherits name="org.soa4all.dashboard.gwt.module.widgetexplorer.WidgetExplorerModule" /-->
+	<inherits name="org.soa4all.coredashboard.gwt.core.shared.CoreShared" />
+	<inherits name="org.soa4all.dashboard.gwt.core.Core" />
+	
+   	<!-- Specify the app entry point class.                         -->
+    <entry-point class='org.soa4all.dashboard.gwt.module.consumptionplatform.client.ConsumptionPlatformModuleEntryPoint'/>
+
+	<servlet path='/ConsumptionPlatform/GoalService.do' class='org.soa4all.dashboard.gwt.server.rpc.ConsumptionPlatformFrontHostedModeServiceDelegate' />
+	<servlet path='/ConsumptionPlatform/ConsumptionClientService.do' class='org.soa4all.dashboard.gwt.server.rpc.ConsumptionPlatformFrontHostedModeServiceDelegate' />
+	<servlet path='/ConsumptionPlatform/RecommendClientService.do' class='org.soa4all.dashboard.gwt.server.rpc.ConsumptionPlatformFrontHostedModeServiceDelegate' />
+	<servlet path='/ConsumptionPlatform/PersonalisationClientService.do' class='org.soa4all.dashboard.gwt.server.rpc.ConsumptionPlatformFrontHostedModeServiceDelegate' />
+	<servlet path='/ConsumptionPlatform/CollaborativeADClientService.do' class='org.soa4all.dashboard.gwt.server.rpc.ConsumptionPlatformFrontHostedModeServiceDelegate' />
+	<!--servlet path='/TemplateGeneratorClientService.do' class='org.soa4all.dashboard.gwt.server.rpc.ProcessEditorFrontHostedModeServiceDelegate' /-->
+
+<!--    <servlet path="/GoalService" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.GoalServiceImpl" />-->
+<!--	<servlet path="/WSDLService" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.WSDLServiceImpl" />-->
+
+	<stylesheet src="css/consumptionplatformModule.css" />
+</module>

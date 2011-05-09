@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "//SPRING/DTD BEAN//EN" "http://www.springframework.org//spring-beans.dtd" >
+
+<beans>
+	
+	<bean id="consumptionServiceImpl" class="org.soa4all.dashboard.consumptionplatform.service.impl.ConsumptionServiceImpl" autowire="byName" />
+	<bean id="consumptionService" parent="consumptionServiceImpl" autowire="byName" />
+	
+	<!--  <bean id="personalisationServiceImpl" class="org.soa4all.dashboard.consumptionplatform.servicepersonalisation.impl.PersonalisationServiceImpl" autowire="byName" />
+	<bean id="personalisationService" parent="personalisationServiceImpl" autowire="byName" /> -->
+
+    <bean id="personalisationServiceImpl" class="org.soa4all.dashboard.consumptionplatform.service.impl.PersonalisationServiceImpl" autowire="byName" />
+	<bean id="personalisationService" parent="personalisationServiceImpl" autowire="byName" />
+	
+	<bean id="fileHelper" class="org.soa4all.dashboard.consumptionplatform.service.util.FileHelper" autowire="byName" />
+	
+	<!-- CollaborativeAD services to be moved to WP9 code  -->
+	<bean id="collaborativeADServiceImpl" class="org.soa4all.dashboard.consumptionplatform.service.impl.CollaborativeADServiceImpl" autowire="byName" />
+	<bean id="ollaborativeADService" parent="collaborativeADServiceImpl" autowire="byName" />
+	
+	
+	<!-- 
+	
+	2 OPTIONS 
+	Or declare beans here
+	<bean id="anotherServiceImpl" class="org.soa4all.blabla.impl.AnotherServiceImpl" autowire="byName" />
+	<bean id="anotherService" parent="anotherServiceImpl" autowire="byName" />
+	
+	or if they are in another context use
+	<import resource="classpath:blablabla_applicationContext.xml" />	
+	-->
+	
+	
+</beans>

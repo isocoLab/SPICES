@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "//SPRING/DTD BEAN//EN" "http://www.springframework.org//spring-beans.dtd" >
+<beans>
+	<import resource="classpath:applicationContext.xml" />
+
+	<bean id="urlMapping" class="org.soa4all.web.servlet.handler.SimpleUrlHandlerMultiMapping" >
+		<property name="urlMaps" >
+			<list>
+				<ref bean="soa4allDashboardCoreUrlMap"/>
+				<ref bean="soa4allDashboardComposerUrlMap"/>
+				<ref bean="soa4allDashboardFavoritesUrlMap"/>
+				<ref bean="soa4allDashboardDiscoveryUrlMap"/>
+			</list>
+		</property>
+	</bean>
+</beans>

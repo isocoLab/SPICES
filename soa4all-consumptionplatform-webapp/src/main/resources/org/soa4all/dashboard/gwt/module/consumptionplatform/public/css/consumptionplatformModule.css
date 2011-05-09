@@ -1,0 +1,15 @@
+.consumptionplatform-home-button-icon {
+	background: url(../images/consumptionplatform/home-button-icon.png) no-repeat center left !important;
+}
+
+.consumptionplatform-dashboard-overview-button .mb-sublayer-2 {
+	background-image:url(../images/consumptionplatform/dashboard-overview-button-front.png) !important;
+}
+
+.icon-wsmo-concept {
+	background-image:url(../icons/wsmo/concept.gif);
+}
+
+.icon-wsmo-instance {
+	background-image:url(../icons/wsmo/instance.gif);
+}

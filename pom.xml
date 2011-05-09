@@ -1,0 +1,337 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>eu.soa4all.studiodecoupled.spices</groupId>
+	<artifactId>soa4all-consumption-builder</artifactId>
+	<packaging>pom</packaging>
+	<name>SOA4All Studio - Standalone Consumption Module Builder</name>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<developers>
+		<developer>
+			<id>imartinez</id>
+			<name>Ivan Martinez</name>
+			<email>imartinez@isoco.com</email>
+			<organization>ISOCO</organization>						
+		</developer>			
+	</developers>
+
+	<repositories>
+		<repository>
+			<id>soa4all public</id>
+			<name>public repository</name>
+			<url>http://87.213.46.9:8080/nexus-webapp-1.3.1/content/groups/public/</url>
+		</repository>
+	</repositories>
+
+	<!--
+		Everything except the modules should go when all the modules have
+		proper parents
+	-->
+	<properties>
+		<gwt.version>1.7</gwt.version>
+		<soa4all.version>0.0.1-SNAPSHOT</soa4all.version>
+		<version>${soa4all.version}</version>
+		<gwtTestFilter>none</gwtTestFilter>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<topDirectoryLocation>../../..</topDirectoryLocation>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			
+			<dependency>
+				<groupId>com.extjs</groupId>
+				<artifactId>gxt</artifactId>
+				<version>1.2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-incubator</artifactId>
+				<version>july-14-2009</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gwt-log</groupId>
+				<artifactId>gwt-log</artifactId>
+				<version>2.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.objenesis</groupId>
+				<artifactId>objenesis</artifactId>
+				<version>1.0</version>
+
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>2.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jettison</groupId>
+				<artifactId>jettison</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>net.oauth</groupId>
+				<artifactId>oauth-core</artifactId>
+				<version>20090522</version>
+			</dependency>
+			<!--dependency>
+				<groupId>soa4all.dashboard.gwt.module.widgetexplorer</groupId>
+				<artifactId>soa4all-dashboard-gwt-module-widgetexplorer</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency-->
+
+		</dependencies>
+	</dependencyManagement>
+	
+	
+	<build>
+
+		<defaultGoal>install</defaultGoal>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+
+			</plugin>
+
+		</plugins>
+
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>1.2-SNAPSHOT</version>
+					<executions>
+						<execution>
+							<configuration>
+								<extraJvmArgs>-Xmx512m -Xss1024k</extraJvmArgs>
+							</configuration>
+							<goals>
+								<goal>compile</goal>
+								<goal>mergewebxml</goal>
+								<!-- <goal>generateAsync</goal> -->
+								<goal>test</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+						<encoding>UTF-8</encoding>
+						<excludes>
+							<exclude>javax/servlet/**</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>process-classes</phase>
+							<configuration>
+								<tasks>
+									<copy todir="${project.build.outputDirectory}">
+										<fileset dir="${project.build.sourceDirectory}">
+											<include name="**/*.java" />
+										</fileset>
+									</copy>
+								</tasks>
+							</configuration>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<configuration>
+						<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+						<warSourceExcludes>.gwt-tmp/**</warSourceExcludes>
+						<!--webappDirectory>/war</webappDirectory-->
+					</configuration>
+				</plugin>
+				<!--
+					If you want to use the target/web.xml file mergewebxml produces,
+					tell the war plugin to use it. Also, exclude what you want from the
+					final artifact here.
+				-->
+
+			</plugins>
+
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>soa4all-consumptionplatform-webapp</module>
+		<module>soa4all-consumptionplatform-service</module>
+	</modules>
+	<dependencies>
+	</dependencies>
+
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+
+
+
+	<profiles>
+		<profile>
+			<id>gwt-dev-windows</id>
+			<properties>
+				<platform>windows</platform>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<os>
+					<family>Windows</family>
+				</os>
+			</activation>
+
+		</profile>
+		<profile>
+			<id>gwt-dev-mac</id>
+			<properties>
+				<platform>mac</platform>
+			</properties>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+		</profile>
+		<profile>
+			<id>gwt-dev-linux</id>
+			<properties>
+				<platform>linux</platform>
+			</properties>
+			<activation>
+				<os>
+					<name>Linux</name>
+				</os>
+			</activation>
+		</profile>
+	</profiles>
+
+</project>

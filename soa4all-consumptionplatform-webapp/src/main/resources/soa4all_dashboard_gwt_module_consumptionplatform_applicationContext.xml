@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "//SPRING/DTD BEAN//EN" "http://www.springframework.org//spring-beans.dtd" >
+<beans>
+
+	<import resource="classpath:soa4all_dashboard_consumptionplatform_service_applicationContext.xml" />
+	<import resource="classpath:soa4all_dashboard_recommend_service_applicationContext.xml" />
+	<!--  <import resource="classpath:soa4all_dashboard_consumptionplatform_service_applicationContext.xml" /> -->
+	<!-- import resource="classpath:soa4all_service_construction_templategenerator_service_applicationContext.xml" /-->
+	
+	<bean id="personalisationServiceDelegateImpl" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.impl.gwt.PersonalisationServiceDelegateImpl" autowire="byName" />
+	<bean id="personalisationServiceDelegate" parent="personalisationServiceDelegateImpl" autowire="byName" />
+	<bean id="personalisationServiceController" class="org.soa4all.web.servlet.ServletWrappingController">
+		<property name="servletInstance" >
+			<ref bean="personalisationServiceDelegate"/>
+		</property>
+	</bean>
+	
+	<bean id="consumptionClientServiceDelegateImpl" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.impl.gwt.ConsumptionClientServiceDelegateImpl" autowire="byName" />
+	<bean id="consumptionClientServiceDelegate" parent="consumptionClientServiceDelegateImpl" autowire="byName" />
+	<bean id="consumptionClientServiceController" class="org.soa4all.web.servlet.ServletWrappingController">
+		<property name="servletInstance" >
+			<ref bean="consumptionClientServiceDelegate"/>
+		</property>
+	</bean>
+	<bean id="goalServiceDelegateImpl" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.impl.gwt.GoalServiceDelegateImpl" autowire="byName" />
+	<bean id="goalServiceDelegate" parent="goalServiceDelegateImpl" autowire="byName" />
+	<bean id="goalServiceController" class="org.soa4all.web.servlet.ServletWrappingController">
+		<property name="servletInstance" >
+			<ref bean="goalServiceDelegate"/>
+		</property>
+	</bean>
+
+	<bean id="recommendClientServiceDelegateImpl" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.impl.gwt.RecommendClientServiceDelegateImpl" autowire="byName" />
+	<bean id="recommendClientServiceDelegate" parent="recommendClientServiceDelegateImpl" autowire="byName" />
+	<bean id="recommendClientServiceController" class="org.soa4all.web.servlet.ServletWrappingController">
+		<property name="servletInstance" >
+			<ref bean="recommendClientServiceDelegate"/>
+		</property>
+	</bean>
+	
+	<!--  Collaborative Advertising service -->
+	<bean id="collaborativeADClientServiceDelegateImpl" class="org.soa4all.dashboard.gwt.module.consumptionplatform.server.impl.gwt.CollaborativeADClientServiceDelegateImpl" autowire="byName" />
+	<bean id="collaborativeADClientServiceDelegate" parent="collaborativeADClientServiceDelegateImpl" autowire="byName" />
+	<bean id="collaborativeADClientServiceController" class="org.soa4all.web.servlet.ServletWrappingController">
+		<property name="servletInstance" >
+			<ref bean="collaborativeADClientServiceDelegate"/>
+		</property>
+	</bean>
+
+
+
+	<bean id="soa4allDashboardConsumptionUrlMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="*/ConsumptionClientService.do">
+					<ref bean="consumptionClientServiceController" />
+				</entry>
+				<entry key="*/GoalService.do">
+					<ref bean="goalServiceController" />
+				</entry>
+				<entry key="*/RecommendClientService.do">
+					<ref bean="recommendClientServiceController" />
+				</entry>
+				<entry key="*/PersonalisationClientService.do">
+					<ref bean="personalisationServiceController" />
+				</entry>
+				<entry key="*/CollaborativeADClientService.do">
+					<ref bean="collaborativeADClientServiceController" />
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

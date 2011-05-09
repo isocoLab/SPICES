@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "//SPRING/DTD BEAN//EN" "http://www.springframework.org//spring-beans.dtd" >
+
+<beans>
+
+	<!-- Import all used spring application context configurations -->
+	<import resource="classpath:soa4all_dashboard_gwt_core_applicationContext.xml" />
+	<import resource="classpath:soa4all_dashboard_gwt_module_consumptionplatform_applicationContext.xml" />
+	<!--import resource="classpath:soa4all_dashboard_gwt_module_widgetexplorer_applicationContext.xml"/-->
+	<import resource="classpath:soa4all_dashboard_gwt_module_favorites_applicationContext.xml"/>
+    <!-- import resource="classpath:soa4all_dashboard_gwt_module_humantasks_applicationContext.xml"/-->
+    
+    <bean id="urlMapping" class="org.soa4all.web.servlet.handler.SimpleUrlHandlerMultiMapping" >
+		<property name="urlMaps" >
+			<list>
+				<!-- Manage the list according to the imported modules'spring application context configurations -->
+				<ref bean="soa4allDashboardCoreUrlMap"/>
+				<ref bean="soa4allDashboardFavoritesUrlMap"/>
+				<ref bean="soa4allDashboardConsumptionUrlMap"/>
+			</list>
+		</property>
+	</bean>
+    
+</beans>
+
